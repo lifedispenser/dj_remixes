@@ -134,3 +134,19 @@ class ManyOfAKind < DJ::Worker
   def perform
   end
 end
+
+class UserSpecific < DJ::Worker
+  is_user_specific_to {5}
+
+  def perforn
+  end
+end
+
+
+class UniqueUserSpecific < DJ::Worker
+  is_user_specific_to {5}
+  is_unique
+
+  def perforn
+  end
+end

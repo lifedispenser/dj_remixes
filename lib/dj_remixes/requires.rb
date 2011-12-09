@@ -6,6 +6,7 @@ require 'mark_facets'
    priority 
    run_at 
    unique 
+   user_specific
    re_enqueue 
    hoptoad 
    airbrake 

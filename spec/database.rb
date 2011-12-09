@@ -1,6 +1,7 @@
 require 'active_record'
-ActiveRecord::Base.logger = Logger.new('/tmp/dj.log')
-ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => '/tmp/jobs.sqlite')
+# ActiveRecord::Base.logger = Logger.new('/tmp/dj.log')
+
+ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => ":memory:")
 ActiveRecord::Migration.verbose = false
 ActiveRecord::Base.default_timezone = :utc
 
@@ -18,6 +19,7 @@ ActiveRecord::Schema.define do
     table.timestamps
     table.datetime :deleted_at
     table.string   :worker_class_name
+    table.integer  :user_id
     table.datetime :started_at
     table.datetime :finished_at
   end

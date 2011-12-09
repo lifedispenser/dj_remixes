@@ -2,13 +2,11 @@ module DJ
   class Worker
     
     attr_accessor :worker_class_name
-    
-    class << self
-      
+
+    class << self  
       def enqueue(*args)
         self.new(*args).enqueue!
       end
-      
     end
     
     def dj_object=(dj)
@@ -30,6 +28,7 @@ module DJ
     def enqueue!(priority = self.priority, run_at = self.run_at)
       job = DJ.enqueue(:payload_object => self, :priority => priority, :run_at => run_at)
       job.worker_class_name = self.worker_class_name
+      job.user_id = self.user_id unless self.user_id.nil?
       job.save
       return job
     end

@@ -13,6 +13,13 @@ describe DJ::Worker do
     
   end
   
+  describe 'is_user_specific' do
+    it 'should have a user_id' do
+      w = UserSpecific.new
+      w.user_id.should == 5
+    end
+  end
+
   describe 'enqueue' do
     
     it 'should enqueue the worker' do
